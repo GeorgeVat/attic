@@ -1,11 +1,15 @@
-import type { Content } from '@/data/types'
 import { Reveal } from '../Reveal'
 import { ContactForm } from './ContactForm'
 import { SITE } from '@/data/site'
+import type { Dictionary } from '@/i18n/dictionaries'
 
-export function ContactBand({ contactTypes }: { contactTypes: Content['contactTypes'] }) {
-  const types = (contactTypes ?? []).map((row) => row.type)
-
+export function ContactBand({
+  dict,
+  form,
+}: {
+  dict: Dictionary['contactBand']
+  form: Dictionary['contactForm']
+}) {
   return (
     <section id="contact" className="px-4 py-20">
       <div
@@ -30,12 +34,9 @@ export function ContactBand({ contactTypes }: { contactTypes: Content['contactTy
           <Reveal>
             <div className="text-paper">
               <h2 className="font-display text-4xl font-light tracking-tight sm:text-5xl">
-                Tell us what&rsquo;s <span className="italic text-sky">missing.</span>
+                {dict.titleLead} <span className="italic text-sky">{dict.titleHighlight}</span>
               </h2>
-              <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/70">
-                A rough idea is enough. We&rsquo;ll come back with questions, a shape, and an honest
-                estimate.
-              </p>
+              <p className="mt-5 max-w-sm text-base leading-relaxed text-paper/70">{dict.body}</p>
               <a
                 href={`mailto:${SITE.email}`}
                 className="mt-8 inline-block text-sm font-semibold text-sky transition-colors hover:text-white"
@@ -46,7 +47,7 @@ export function ContactBand({ contactTypes }: { contactTypes: Content['contactTy
           </Reveal>
           <Reveal delay={0.1}>
             <div className="glass rounded-3xl p-6 sm:p-8">
-              <ContactForm challengeTypes={types} />
+              <ContactForm dict={form} />
             </div>
           </Reveal>
         </div>

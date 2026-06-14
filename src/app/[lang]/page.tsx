@@ -8,21 +8,27 @@ import { ManifestoSection } from '@/components/sections/manifesto/ManifestoSecti
 import { TestimonialsSection } from '@/components/sections/testimonials/TestimonialsSection'
 import { FaqSection } from '@/components/sections/faq/FaqSection'
 import { ContactBand } from '@/components/sections/contact/ContactBand'
-import { CONTENT, PROJECTS } from '@/data/content'
+import { getProjects, getStats } from '@/data/content'
+import { defaultLocale, isLocale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
 
-export default function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  const locale = isLocale(lang) ? lang : defaultLocale
+  const dict = getDictionary(locale)
+
   return (
     <main id="main">
-      <HeroSection />
-      <TrustMarquee />
-      <SelectedWorkSection projects={PROJECTS} />
-      <ServicesSection services={CONTENT.services} />
-      <ProcessSection />
-      <StatsBand />
-      <ManifestoSection manifesto={CONTENT.manifesto} />
-      <TestimonialsSection />
-      <FaqSection faq={CONTENT.faq} />
-      <ContactBand contactTypes={CONTENT.contactTypes} />
+      <HeroSection dict={dict.hero} locale={locale} />
+      <TrustMarquee dict={dict.trust} />
+      <SelectedWorkSection dict={dict.selectedWork} projects={getProjects(dict)} locale={locale} />
+      <ServicesSection dict={dict.services} />
+      <ProcessSection dict={dict.process} />
+      <StatsBand items={getStats(dict)} />
+      <ManifestoSection dict={dict.manifesto} />
+      <TestimonialsSection dict={dict.testimonials} />
+      <FaqSection dict={dict.faq} />
+      <ContactBand dict={dict.contactBand} form={dict.contactForm} />
     </main>
   )
 }

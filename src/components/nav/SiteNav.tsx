@@ -6,16 +6,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Magnetic } from '@/components/motion/Magnetic'
 import { AtticLogo } from '@/components/brand/AtticLogo'
 import { SITE } from '@/data/site'
+import type { Locale } from '@/i18n/config'
+import type { Dictionary } from '@/i18n/dictionaries'
+import { localePath } from '@/i18n/routing'
 
-const LINKS = [
-  { href: '/work', label: 'Work' },
-  { href: '/#services', label: 'Services' },
-  { href: '/#approach', label: 'Approach' },
-  { href: '/#studio', label: 'Studio' },
-]
-
-export function SiteNav() {
+export function SiteNav({ dict, locale }: { dict: Dictionary['nav']; locale: Locale }) {
   const [open, setOpen] = useState(false)
+  const links = dict.links
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
@@ -23,12 +20,12 @@ export function SiteNav() {
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-50 focus:rounded-full focus:bg-card focus:px-4 focus:py-2 focus:text-sm"
       >
-        Skip to content
+        {dict.skip}
       </a>
       <nav className="liquid-glass mx-auto flex max-w-5xl items-center justify-between rounded-full py-2.5 pl-6 pr-2.5">
         <Link
-          href="/"
-          aria-label={`${SITE.name} — home`}
+          href={localePath(locale, '/')}
+          aria-label={`${SITE.name} — ${dict.home}`}
           className="text-accent transition-colors hover:text-ink"
           onClick={() => setOpen(false)}
         >
@@ -36,9 +33,9 @@ export function SiteNav() {
         </Link>
 
         <ul className="hidden items-center gap-7 text-sm font-medium text-muted md:flex">
-          {LINKS.map((link) => (
+          {links.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="transition-colors hover:text-ink">
+              <Link href={localePath(locale, link.href)} className="transition-colors hover:text-ink">
                 {link.label}
               </Link>
             </li>
@@ -48,15 +45,15 @@ export function SiteNav() {
         <div className="flex items-center gap-2">
           <Magnetic className="hidden sm:inline-flex" strength={0.4}>
             <Link
-              href="/contact"
+              href={localePath(locale, '/contact')}
               className="btn-primary inline-flex items-center px-5 py-2.5 text-sm"
             >
-              Start a project
+              {dict.cta}
             </Link>
           </Magnetic>
           <button
             type="button"
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={open ? dict.closeMenu : dict.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className="flex size-10 items-center justify-center rounded-full border border-hairline bg-white/70 text-ink md:hidden"
@@ -86,10 +83,10 @@ export function SiteNav() {
             className="liquid-glass mx-auto mt-3 max-w-5xl overflow-hidden rounded-3xl p-4 md:hidden"
           >
             <ul className="flex flex-col">
-              {LINKS.map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={localePath(locale, link.href)}
                     onClick={() => setOpen(false)}
                     className="block rounded-xl px-4 py-3 text-base font-medium text-ink transition-colors hover:bg-accent/10"
                   >
@@ -99,11 +96,11 @@ export function SiteNav() {
               ))}
             </ul>
             <Link
-              href="/contact"
+              href={localePath(locale, '/contact')}
               onClick={() => setOpen(false)}
               className="btn-primary mt-2 flex w-full justify-center px-5 py-3 text-sm"
             >
-              Start a project
+              {dict.cta}
             </Link>
           </motion.div>
         )}

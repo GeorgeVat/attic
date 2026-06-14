@@ -3,8 +3,19 @@ import { SectionMarker } from '../SectionMarker'
 import { Reveal } from '../Reveal'
 import { WorkRow } from './WorkRow'
 import type { ProjectRowData } from './projectRowData'
+import type { Locale } from '@/i18n/config'
+import type { Dictionary } from '@/i18n/dictionaries'
+import { localePath } from '@/i18n/routing'
 
-export function SelectedWorkSection({ projects }: { projects: ProjectRowData[] }) {
+export function SelectedWorkSection({
+  dict,
+  projects,
+  locale,
+}: {
+  dict: Dictionary['selectedWork']
+  projects: ProjectRowData[]
+  locale: Locale
+}) {
   if (projects.length === 0) return null
   const featured = projects.slice(0, 3)
 
@@ -13,13 +24,13 @@ export function SelectedWorkSection({ projects }: { projects: ProjectRowData[] }
       <Reveal>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <SectionMarker label="Selected work" />
+            <SectionMarker label={dict.marker} />
             <h2 className="font-display mt-5 max-w-2xl text-4xl font-light leading-tight tracking-tight sm:text-5xl">
-              Work shaped around the <span className="italic text-accent">business behind it.</span>
+              {dict.titleLead} <span className="italic text-accent">{dict.titleHighlight}</span>
             </h2>
           </div>
-          <Link href="/work" className="btn-glass inline-flex items-center px-5 py-2.5 text-sm">
-            View all work →
+          <Link href={localePath(locale, '/work')} className="btn-glass inline-flex items-center px-5 py-2.5 text-sm">
+            {dict.viewAll}
           </Link>
         </div>
       </Reveal>

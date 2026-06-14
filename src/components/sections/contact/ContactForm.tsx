@@ -1,13 +1,14 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import type { Dictionary } from '@/i18n/dictionaries'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
 const inputClass =
   'field-glass w-full px-4 py-3 text-sm text-ink placeholder:text-muted/60'
 
-export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
+export function ContactForm({ dict }: { dict: Dictionary['contactForm'] }) {
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
 
@@ -25,14 +26,14 @@ export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
       })
       const json = (await res.json()) as { success?: boolean; error?: string }
       if (!res.ok || !json.success) {
-        setError(json.error || 'Something went wrong. Please try again.')
+        setError(json.error || dict.errorGeneric)
         setStatus('error')
         return
       }
       setStatus('success')
       form.reset()
     } catch {
-      setError('Network error. Please try again.')
+      setError(dict.errorNetwork)
       setStatus('error')
     }
   }
@@ -40,10 +41,8 @@ export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
   if (status === 'success') {
     return (
       <div className="rounded-xl border border-hairline bg-card p-8">
-        <p className="font-display text-2xl text-ink">Thank you.</p>
-        <p className="mt-2 text-sm text-muted">
-          We received your message and will get back to you within 24–48 hours.
-        </p>
+        <p className="font-display text-2xl text-ink">{dict.successTitle}</p>
+        <p className="mt-2 text-sm text-muted">{dict.successBody}</p>
       </div>
     )
   }
@@ -61,19 +60,19 @@ export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
       />
       <div>
         <label htmlFor="contact-name" className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-          name *
+          {dict.name} *
         </label>
         <input
           id="contact-name"
           name="name"
           required
           className={inputClass}
-          placeholder="Your name"
+          placeholder={dict.namePlaceholder}
         />
       </div>
       <div>
         <label htmlFor="contact-email" className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-          email *
+          {dict.email} *
         </label>
         <input
           id="contact-email"
@@ -81,24 +80,24 @@ export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
           type="email"
           required
           className={inputClass}
-          placeholder="you@company.com"
+          placeholder={dict.emailPlaceholder}
         />
       </div>
       <div>
         <label htmlFor="contact-company" className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-          company
+          {dict.company}
         </label>
-        <input id="contact-company" name="company" className={inputClass} placeholder="Optional" />
+        <input id="contact-company" name="company" className={inputClass} placeholder={dict.companyPlaceholder} />
       </div>
       <div>
         <label htmlFor="contact-challenge" className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-          challenge
+          {dict.challenge}
         </label>
         <select id="contact-challenge" name="challenge" className={inputClass} defaultValue="">
           <option value="" disabled>
-            What are we building?
+            {dict.challengePlaceholder}
           </option>
-          {challengeTypes.map((type) => (
+          {dict.types.map((type) => (
             <option key={type} value={type}>
               {type}
             </option>
@@ -107,7 +106,7 @@ export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
       </div>
       <div className="sm:col-span-2">
         <label htmlFor="contact-message" className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-          message *
+          {dict.message} *
         </label>
         <textarea
           id="contact-message"
@@ -115,7 +114,7 @@ export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
           required
           rows={5}
           className={inputClass}
-          placeholder="Tell us what's missing."
+          placeholder={dict.messagePlaceholder}
         />
       </div>
       {status === 'error' && <p className="text-sm text-accent sm:col-span-2">{error}</p>}
@@ -125,7 +124,7 @@ export function ContactForm({ challengeTypes }: { challengeTypes: string[] }) {
           disabled={status === 'submitting'}
           className="btn-primary inline-flex items-center px-7 py-3.5 text-sm disabled:opacity-60"
         >
-          {status === 'submitting' ? 'Sending…' : 'Send message'}
+          {status === 'submitting' ? dict.sending : dict.send}
         </button>
       </div>
     </form>

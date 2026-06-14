@@ -1,19 +1,19 @@
 import { SectionMarker } from '../SectionMarker'
 import { Reveal } from '../Reveal'
-import { PROCESS } from '@/data/content'
+import type { Dictionary } from '@/i18n/dictionaries'
 
-export function ProcessSection() {
+export function ProcessSection({ dict }: { dict: Dictionary['process'] }) {
   return (
     <section id="approach" className="mx-auto max-w-6xl scroll-mt-28 px-6 py-24">
       <Reveal>
-        <SectionMarker label="Approach" />
+        <SectionMarker label={dict.marker} />
         <h2 className="font-display mt-5 max-w-2xl text-4xl font-light leading-tight tracking-tight sm:text-5xl">
-          A short path from <span className="italic text-accent">idea to live.</span>
+          {dict.titleLead} <span className="italic text-accent">{dict.titleHighlight}</span>
         </h2>
       </Reveal>
 
       <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-4">
-        {PROCESS.map((step, i) => (
+        {dict.steps.map((step, i) => (
           <Reveal key={step.title} delay={Math.min(i * 0.07, 0.3)} className="h-full">
             <div className="group flex h-full flex-col bg-card/85 p-7 backdrop-blur transition-colors hover:bg-card">
               <span className="font-display text-5xl font-light text-accent/25 transition-colors group-hover:text-accent/50">

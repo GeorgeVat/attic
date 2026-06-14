@@ -1,32 +1,40 @@
 import { SITE } from '@/data/site'
+import type { Locale } from '@/i18n/config'
 
-const organization = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: SITE.name,
-  url: SITE.domain,
-  description: SITE.description,
-  email: SITE.email,
-  address: { '@type': 'PostalAddress', addressCountry: 'GR', addressLocality: SITE.city },
-  sameAs: [SITE.linkedin],
-  knowsAbout: [
-    'Custom Software Development',
-    'E-commerce Platforms',
-    'Ticketing Systems',
-    'AI Automation',
-    'Web Development',
-    'Software Studio Athens',
-  ],
-}
+export function StructuredData({
+  description,
+  locale,
+}: {
+  description: string
+  locale: Locale
+}) {
+  const organization = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.domain,
+    description,
+    email: SITE.email,
+    address: { '@type': 'PostalAddress', addressCountry: 'GR', addressLocality: SITE.city },
+    sameAs: [SITE.linkedin],
+    knowsAbout: [
+      'Custom Software Development',
+      'E-commerce Platforms',
+      'Ticketing Systems',
+      'AI Automation',
+      'Web Development',
+      'Software Studio Athens',
+    ],
+  }
 
-const website = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE.name,
-  url: SITE.domain,
-}
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.domain,
+    inLanguage: locale,
+  }
 
-export function StructuredData() {
   return (
     <>
       {[organization, website].map((schema) => (

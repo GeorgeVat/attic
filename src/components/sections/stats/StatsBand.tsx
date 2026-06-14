@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { animate, useInView, useReducedMotion } from 'framer-motion'
-import { STATS } from '@/data/content'
+
+type Stat = { value: number; suffix?: string; prefix?: string; label: string }
 
 function Counter({ value, prefix, suffix }: { value: number; prefix?: string; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -33,11 +34,11 @@ function Counter({ value, prefix, suffix }: { value: number; prefix?: string; su
   )
 }
 
-export function StatsBand() {
+export function StatsBand({ items }: { items: Stat[] }) {
   return (
     <section className="px-4 py-16">
       <div className="glass mx-auto grid max-w-6xl gap-y-10 rounded-[2rem] px-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        {STATS.map((stat) => (
+        {items.map((stat) => (
           <div key={stat.label} className="text-center">
             <Counter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
             <p className="mt-3 text-sm font-medium text-muted">{stat.label}</p>

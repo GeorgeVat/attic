@@ -6,10 +6,11 @@ import { useLenis } from 'lenis/react'
 import { X } from 'lucide-react'
 import { useCallbackModal } from './useCallbackModal'
 import { CallbackForm } from './CallbackForm'
+import type { Dictionary } from '@/i18n/dictionaries'
 
 // Accessible dialog shell: backdrop + animated panel, ESC/backdrop to close,
 // focus trap, focus restore, and page-scroll lock (Lenis + native) while open.
-export function CallbackModal() {
+export function CallbackModal({ dict }: { dict: Dictionary['callback'] }) {
   const { isOpen, close } = useCallbackModal()
   const reduce = useReducedMotion()
   const lenis = useLenis()
@@ -103,12 +104,12 @@ export function CallbackModal() {
             <button
               type="button"
               onClick={close}
-              aria-label="Close"
+              aria-label={dict.close}
               className="absolute right-4 top-4 text-muted transition-colors duration-200 hover:text-accent"
             >
               <X size={20} />
             </button>
-            <CallbackForm onDone={close} />
+            <CallbackForm onDone={close} dict={dict} />
           </motion.div>
         </motion.div>
       )}

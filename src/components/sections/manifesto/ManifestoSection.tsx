@@ -1,16 +1,10 @@
 import Image from 'next/image'
-import type { Content } from '@/data/types'
 import { Reveal } from '../Reveal'
 import { SectionMarker } from '../SectionMarker'
+import type { Dictionary } from '@/i18n/dictionaries'
 
-const PRINCIPLES = [
-  { title: 'Senior team, no juniors', body: 'Every line is written by people who have shipped real products.' },
-  { title: 'Code you own outright', body: 'Clean, documented, no lock-in — the system is yours, not ours.' },
-  { title: 'Weeks, not quarters', body: 'Tight feedback loops mean you see working software fast.' },
-]
-
-export function ManifestoSection({ manifesto }: { manifesto: Content['manifesto'] }) {
-  const lines = manifesto?.paragraph1 ?? []
+export function ManifestoSection({ dict }: { dict: Dictionary['manifesto'] }) {
+  const lines = dict.lines
   if (lines.length === 0) return null
 
   return (
@@ -36,22 +30,22 @@ export function ManifestoSection({ manifesto }: { manifesto: Content['manifesto'
 
         <div className="relative">
           <Reveal>
-            <SectionMarker label="Studio" />
+            <SectionMarker label={dict.marker} />
           </Reveal>
           <div className="mt-8 max-w-3xl">
-            {lines.map((row, i) => (
-              <Reveal key={row.id ?? i} delay={i * 0.12}>
+            {lines.map((line, i) => (
+              <Reveal key={i} delay={i * 0.12}>
                 <p className="font-display text-3xl font-light leading-snug tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">
-                  {row.line}
+                  {line}
                 </p>
               </Reveal>
             ))}
           </div>
 
-          {manifesto?.paragraph2 && (
+          {dict.paragraph2 && (
             <Reveal delay={0.4}>
               <p className="mt-9 max-w-xl text-base leading-relaxed text-muted">
-                {manifesto.paragraph2}
+                {dict.paragraph2}
               </p>
             </Reveal>
           )}
@@ -60,7 +54,7 @@ export function ManifestoSection({ manifesto }: { manifesto: Content['manifesto'
             <figure className="group relative overflow-hidden rounded-3xl border border-white/60 shadow-[0_40px_80px_-44px_rgba(18,37,36,0.5)]">
               <Image
                 src="/studio.jpg"
-                alt="The ATTIC studio — the wordmark on the wall, branding across the workspace"
+                alt={dict.imageAlt}
                 width={1408}
                 height={768}
                 sizes="(min-width: 1024px) 60rem, 92vw"
@@ -74,7 +68,7 @@ export function ManifestoSection({ manifesto }: { manifesto: Content['manifesto'
           </Reveal>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            {PRINCIPLES.map((p, i) => (
+            {dict.principles.map((p, i) => (
               <Reveal key={p.title} delay={0.1 + i * 0.08}>
                 <div className="glass h-full rounded-2xl p-6">
                   <p className="font-display text-lg font-semibold tracking-tight text-ink">
