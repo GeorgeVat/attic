@@ -1,0 +1,274 @@
+@import 'tailwindcss';
+
+@theme {
+  /* palette — luminous cool blue, light theme */
+  --color-paper: #eef3fb;
+  --color-ink: #0b1a30;
+  --color-muted: #56678a;
+  --color-hairline: #d9e3f4;
+  --color-card: #ffffff;
+  --color-accent: #2f6bff;
+  --color-accent-soft: #7aa6ff;
+  --color-sky: #34c2f0;
+
+  /* type — wired to next/font variables set in layout.tsx */
+  --font-display: var(--font-display-face);
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-mono-face);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    overflow-x: clip;
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Full-coverage background: a slow animated colour mesh + a faint full grid,
+   both fixed to the viewport so they cover the entire page as it scrolls.
+   --------------------------------------------------------------------------- */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-color: #eaf1fb;
+  background-image:
+    radial-gradient(38% 42% at 12% 8%, rgba(122, 166, 255, 0.55), transparent 60%),
+    radial-gradient(36% 40% at 88% 4%, rgba(52, 194, 240, 0.45), transparent 60%),
+    radial-gradient(42% 44% at 78% 64%, rgba(47, 107, 255, 0.32), transparent 64%),
+    radial-gradient(44% 46% at 8% 82%, rgba(140, 124, 255, 0.32), transparent 66%),
+    radial-gradient(40% 40% at 50% 50%, rgba(52, 194, 240, 0.16), transparent 68%);
+  background-repeat: no-repeat;
+  background-size:
+    160% 160%,
+    160% 160%,
+    150% 150%,
+    150% 150%,
+    150% 150%;
+  animation: mesh-shift 32s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-shift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%,
+      50% 50%;
+  }
+  100% {
+    background-position:
+      28% 18%,
+      72% 22%,
+      62% 78%,
+      26% 70%,
+      45% 55%;
+  }
+}
+
+/* Faint structural grid over the whole viewport — gives the colour field a
+   built, engineered texture instead of pure wash. Light radial vignette keeps
+   the centre calm for reading. */
+.site-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(11, 26, 48, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 26, 48, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(circle at 50% 36%, #000 60%, rgba(0, 0, 0, 0.35) 100%);
+  mask-image: radial-gradient(circle at 50% 36%, #000 60%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+/* Frosted card surface used across sections. */
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.66));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 30px 60px -38px rgba(11, 26, 48, 0.4);
+}
+
+/* iOS-style "liquid glass": very translucent, strong blur + saturation so the
+   colour mesh refracts through, a bright top rim (inner highlights), a soft
+   lower inner glow, and a diagonal specular sheen. */
+.liquid-glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px) saturate(185%) brightness(1.06);
+  -webkit-backdrop-filter: blur(22px) saturate(185%) brightness(1.06);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -10px 24px rgba(255, 255, 255, 0.18),
+    inset 0 0 1px rgba(255, 255, 255, 0.6),
+    0 12px 34px -12px rgba(11, 26, 48, 0.32),
+    0 2px 8px -2px rgba(11, 26, 48, 0.16);
+}
+
+/* diagonal specular highlight — sits above the glass, below the content */
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    132deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0) 28%,
+    rgba(255, 255, 255, 0) 68%,
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Glossy primary button — vibrant accent fill with a lit top edge and specular
+   sheen, in the same liquid-glass family as the nav. */
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 9999px;
+  color: #ffffff;
+  font-weight: 600;
+  background: linear-gradient(180deg, var(--color-accent-soft) -10%, var(--color-accent) 70%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -8px 16px rgba(11, 26, 48, 0.18),
+    0 14px 30px -12px rgba(47, 107, 255, 0.6);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 46%);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05) saturate(1.05);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    0 18px 38px -12px rgba(47, 107, 255, 0.7);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+}
+
+/* Glassy secondary button — translucent, blurred, ink text. */
+.btn-glass {
+  border-radius: 9999px;
+  color: var(--color-ink);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px) saturate(180%) brightness(1.05);
+  -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    0 10px 24px -12px rgba(11, 26, 48, 0.28);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-glass:hover {
+  transform: translateY(-1px);
+  color: var(--color-accent);
+}
+
+/* Glassy form field. */
+.field-glass {
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.field-glass:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    0 0 0 3px rgba(47, 107, 255, 0.18);
+}
+
+/* Accent gradient text for the headline highlight. */
+.text-gradient {
+  background: linear-gradient(105deg, var(--color-accent) 10%, var(--color-sky) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Infinite marquee track for the trust strip. */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg,
+  .marquee-track {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
