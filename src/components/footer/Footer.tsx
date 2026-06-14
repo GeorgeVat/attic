@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { AtticLogo } from '@/components/brand/AtticLogo'
 import { SITE } from '@/data/site'
 
 export function Footer() {
@@ -7,10 +8,7 @@ export function Footer() {
       <div className="glass mx-auto max-w-6xl overflow-hidden rounded-[2rem] px-8 py-12 sm:px-12">
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div className="max-w-sm">
-            <p className="font-display text-3xl font-semibold tracking-tight text-ink">
-              {SITE.wordmark}
-              <span className="text-accent">.</span>
-            </p>
+            <AtticLogo className="h-8 w-auto text-accent" aria-label={SITE.name} />
             <p className="mt-3 text-sm leading-relaxed text-muted">
               {SITE.tagline} Designed &amp; built end to end in {SITE.city}.
             </p>

@@ -41,6 +41,7 @@ export default function FrontendLayout({ children }: { children: ReactNode }) {
       <body>
         <div aria-hidden className="site-bg" />
         <div aria-hidden className="site-grid" />
+        <div aria-hidden className="site-grain" />
         <StructuredData />
         <CallbackProvider>
           <LenisProvider>

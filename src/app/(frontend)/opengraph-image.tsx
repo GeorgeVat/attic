@@ -18,14 +18,14 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: 80,
-          background: 'linear-gradient(135deg, #0b1a30 0%, #16335f 55%, #1e4fa6 100%)',
-          color: '#eef3fb',
+          background: 'linear-gradient(135deg, #0e1f1e 0%, #143a3c 52%, #1d5a5e 100%)',
+          color: '#f4eee2',
           fontFamily: 'sans-serif',
         }}
       >
         <div style={{ display: 'flex', fontSize: 40, fontWeight: 700, letterSpacing: '-0.02em' }}>
           {SITE.wordmark}
-          <span style={{ color: '#34c2f0' }}>.</span>
+          <span style={{ color: '#34c2d4' }}>.</span>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div
@@ -39,7 +39,7 @@ export default function OpengraphImage() {
           >
             {SITE.tagline}
           </div>
-          <div style={{ display: 'flex', marginTop: 28, fontSize: 30, color: '#9fb6e0' }}>
+          <div style={{ display: 'flex', marginTop: 28, fontSize: 30, color: '#9fc4c2' }}>
             {`Software studio — ${SITE.city}`}
           </div>
         </div>

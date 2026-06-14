@@ -22,7 +22,7 @@ export function ServicesSection({ services }: { services: Content['services'] })
             <Reveal key={service.id ?? service.title} delay={Math.min(i * 0.05, 0.25)} className="h-full">
               <div className="group glass flex h-full flex-col gap-5 rounded-3xl p-7 transition-transform duration-300 hover:-translate-y-1.5">
                 {Icon && (
-                  <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-sky text-white shadow-[0_14px_28px_-12px_rgba(47,107,255,0.8)]">
+                  <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-sky text-white shadow-[0_14px_28px_-12px_rgba(31,90,95,0.8)]">
                     <Icon aria-hidden strokeWidth={1.75} className="size-5" />
                   </span>
                 )}

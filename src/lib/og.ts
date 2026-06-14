@@ -6,5 +6,5 @@ import type { Metadata } from 'next'
 // `opengraph-image.tsx` convention, so it is intentionally not listed here.
 export const ogDefaults: NonNullable<Metadata['openGraph']> = {
   type: 'website',
-  siteName: 'Driftwork',
+  siteName: 'ATTIC',
 }

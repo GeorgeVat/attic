@@ -15,8 +15,8 @@ export function ChatBubble({
       <div
         className={
           isUser
-            ? 'max-w-[85%] rounded-[1.25rem] rounded-tr-sm bg-gradient-to-br from-accent to-sky px-4 py-2.5 text-sm leading-relaxed text-white shadow-[0_12px_26px_-14px_rgba(47,107,255,0.8)]'
-            : 'max-w-[85%] rounded-[1.25rem] rounded-tl-sm border border-hairline bg-white px-4 py-2.5 text-sm leading-relaxed text-ink shadow-[0_10px_24px_-18px_rgba(11,26,48,0.5)]'
+            ? 'max-w-[85%] rounded-[1.25rem] rounded-tr-sm bg-gradient-to-br from-accent to-sky px-4 py-2.5 text-sm leading-relaxed text-white shadow-[0_12px_26px_-14px_rgba(31,90,95,0.8)]'
+            : 'max-w-[85%] rounded-[1.25rem] rounded-tl-sm border border-hairline bg-white px-4 py-2.5 text-sm leading-relaxed text-ink shadow-[0_10px_24px_-18px_rgba(18,37,36,0.5)]'
         }
       >
         {text}

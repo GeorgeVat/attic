@@ -1,10 +1,10 @@
-# Driftwork
+# ATTIC
 
-Static marketing site for **Driftwork**, a software studio. Built with Next.js 15
+Static marketing site for **ATTIC**, a software studio. Built with Next.js 15
 (App Router), React 19, Tailwind v4, Framer Motion, and Lenis smooth scroll.
 
-No CMS, no database — all content is hardcoded in `src/data/`. An editorial +
-"schematic/blueprint" design language on a mint-paper / forest-ink / coral palette.
+No CMS, no database — all content is hardcoded in `src/data/`. A technical,
+"blueprint" design language on a bone-paper / teal-charcoal-ink / petrol + cyan palette.
 
 ## Stack
 

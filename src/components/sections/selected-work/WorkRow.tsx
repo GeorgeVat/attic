@@ -7,8 +7,8 @@ export function WorkRow({ project, index }: { project: ProjectRowData; index: nu
 
   const panel = (
     <div
-      className="group relative aspect-[5/4] overflow-hidden rounded-[1.75rem] border border-white/60 shadow-[0_40px_80px_-44px_rgba(11,26,48,0.55)]"
-      style={{ backgroundImage: project.tint ?? 'linear-gradient(135deg,#2f6bff,#34c2f0)' }}
+      className="group relative aspect-[5/4] overflow-hidden rounded-[1.75rem] border border-white/60 shadow-[0_40px_80px_-44px_rgba(18,37,36,0.55)]"
+      style={{ backgroundImage: project.tint ?? 'linear-gradient(135deg,#31696d,#34c2d4)' }}
     >
       {project.imageUrl && (
         <Image

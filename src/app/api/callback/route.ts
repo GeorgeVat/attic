@@ -38,13 +38,13 @@ const internalEmailHtml = (d: CallbackData, openNow: boolean) => {
 <body style="margin:0;padding:32px 16px;background:#f3f6f2;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#10211a;">
   <table role="presentation" style="max-width:560px;margin:0 auto;width:100%;border-collapse:collapse;">
     <tr><td style="padding-bottom:24px;font-size:20px;font-weight:700;letter-spacing:-0.02em;">
-      driftwork<span style="color:#ff6b4a;">.</span>
+      attic<span style="color:#31696d;">.</span>
     </td></tr>
     <tr><td style="background:#ffffff;border:1px solid #dde6dd;border-radius:12px;padding:28px;">
       <h2 style="margin:0 0 14px;font-size:18px;">New callback request</h2>
-      <div style="border-left:3px solid #ff6b4a;padding-left:14px;">
+      <div style="border-left:3px solid #31696d;padding-left:14px;">
         ${row('Name', name)}
-        ${row('Phone', `<a href="tel:${phone}" style="color:#ff6b4a;text-decoration:none;">${phone}</a>`)}
+        ${row('Phone', `<a href="tel:${phone}" style="color:#31696d;text-decoration:none;">${phone}</a>`)}
         ${row('Best time', preferredTime)}
         ${row('Promised', openNow ? 'Call within 30 minutes' : 'Call next business day')}
       </div>
@@ -53,7 +53,7 @@ const internalEmailHtml = (d: CallbackData, openNow: boolean) => {
       </div>
     </td></tr>
     <tr><td style="padding-top:20px;font-size:12px;color:#5d6b62;">
-      Software, built to fit. — Athens<br/>© ${new Date().getFullYear()} Driftwork
+      Software, built to fit. — Athens<br/>© ${new Date().getFullYear()} ATTIC
     </td></tr>
   </table>
 </body>

@@ -51,17 +51,17 @@ export function ConversationCard({ scenarios }: { scenarios: Scenario[] }) {
 
       {/* header — avatar tile + name, no chat-app "online" chrome */}
       <div className="flex items-center gap-3 px-5 pb-4 pt-5">
-        <span className="relative flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-sky text-sm font-bold text-white shadow-[0_10px_22px_-10px_rgba(47,107,255,0.9)]">
-          d
+        <span className="relative flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-sky text-sm font-bold text-white shadow-[0_10px_22px_-10px_rgba(31,90,95,0.9)]">
+          a
           <motion.span
             aria-hidden
-            className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full border-2 border-white bg-emerald-400"
+            className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full border-2 border-white bg-[#34c2d4]"
             animate={reduced ? undefined : { scale: [1, 1.25, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
         </span>
         <div className="leading-tight">
-          <p className="font-display text-sm font-semibold text-ink">Driftwork</p>
+          <p className="font-display text-sm font-semibold text-ink">ATTIC</p>
           <p className="text-[11px] text-muted">Solutions desk · replies in minutes</p>
         </div>
       </div>

@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Magnetic } from '@/components/motion/Magnetic'
+import { AtticLogo } from '@/components/brand/AtticLogo'
 import { SITE } from '@/data/site'
 
 const LINKS = [
@@ -27,11 +29,10 @@ export function SiteNav() {
         <Link
           href="/"
           aria-label={`${SITE.name} — home`}
-          className="font-display text-xl font-semibold tracking-tight text-ink"
+          className="text-accent transition-colors hover:text-ink"
           onClick={() => setOpen(false)}
         >
-          {SITE.wordmark}
-          <span className="text-accent">.</span>
+          <AtticLogo className="h-5 w-auto" />
         </Link>
 
         <ul className="hidden items-center gap-7 text-sm font-medium text-muted md:flex">
@@ -45,12 +46,14 @@ export function SiteNav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Link
-            href="/contact"
-            className="btn-primary hidden px-5 py-2.5 text-sm sm:inline-flex sm:items-center"
-          >
-            Start a project
-          </Link>
+          <Magnetic className="hidden sm:inline-flex" strength={0.4}>
+            <Link
+              href="/contact"
+              className="btn-primary inline-flex items-center px-5 py-2.5 text-sm"
+            >
+              Start a project
+            </Link>
+          </Magnetic>
           <button
             type="button"
             aria-label={open ? 'Close menu' : 'Open menu'}

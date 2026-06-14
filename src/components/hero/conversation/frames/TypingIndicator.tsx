@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export function TypingIndicator() {
   return (
-    <div className="flex justify-start" role="status" aria-label="driftwork is typing">
+    <div className="flex justify-start" role="status" aria-label="attic is typing">
       <div className="flex items-center gap-1 rounded-[1.25rem] rounded-tl-sm border border-hairline bg-white px-4 py-3">
         {[0, 1, 2].map((i) => (
           <motion.span

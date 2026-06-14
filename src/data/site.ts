@@ -1,11 +1,11 @@
 // Single source of truth for brand + contact details across the site.
 export const SITE = {
-  name: 'Driftwork',
-  wordmark: 'driftwork',
+  name: 'ATTIC',
+  wordmark: 'attic',
   tagline: 'Software, built to fit.',
-  domain: 'https://driftwork.studio',
-  email: 'hello@driftwork.studio',
-  linkedin: 'https://linkedin.com/company/driftwork-studio',
+  domain: 'https://attic.studio',
+  email: 'hello@attic.studio',
+  linkedin: 'https://linkedin.com/company/attic-studio',
   location: 'Athens, Greece',
   city: 'Athens',
   description:

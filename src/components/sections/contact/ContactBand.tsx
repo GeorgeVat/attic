@@ -9,13 +9,13 @@ export function ContactBand({ contactTypes }: { contactTypes: Content['contactTy
   return (
     <section id="contact" className="px-4 py-20">
       <div
-        className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-white/60 px-7 py-16 shadow-[0_50px_100px_-60px_rgba(11,26,48,0.55)] sm:px-14"
-        style={{ background: 'linear-gradient(155deg,#0b1a30 0%,#16335f 60%,#1e4fa6 100%)' }}
+        className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-white/60 px-7 py-16 shadow-[0_50px_100px_-60px_rgba(18,37,36,0.55)] sm:px-14"
+        style={{ background: 'linear-gradient(155deg,#0e1f1e 0%,#143a3c 58%,#1d5a5e 100%)' }}
       >
         <div
           aria-hidden
           className="absolute -right-20 -top-24 size-80 rounded-full opacity-50 blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgba(52,194,240,0.7), transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(52,194,212,0.65), transparent 70%)' }}
         />
         <div
           aria-hidden

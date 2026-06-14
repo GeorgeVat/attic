@@ -15,7 +15,7 @@ export const PROJECTS: ProjectRowData[] = [
     impact: 'Unified POS + storefront into one source of truth — zero oversells, +38% orders/day.',
     imageUrl: '/work/lumiere-atelier.jpg',
     imageAlt: 'Boutique clothing rack at Lumière Atelier',
-    tint: 'linear-gradient(135deg, #2f6bff 0%, #34c2f0 100%)',
+    tint: 'linear-gradient(135deg, #31696d 0%, #34c2d4 100%)',
   },
   {
     slug: 'cadence-festival',
@@ -26,7 +26,7 @@ export const PROJECTS: ProjectRowData[] = [
     impact: 'Owned ticketing platform — 2,400 tickets on launch night, 0% third-party fees.',
     imageUrl: '/work/cadence-festival.jpg',
     imageAlt: 'Crowd under stage lights at Cadence Festival',
-    tint: 'linear-gradient(135deg, #1e3a8a 0%, #2f6bff 100%)',
+    tint: 'linear-gradient(135deg, #123a3c 0%, #31696d 100%)',
   },
   {
     slug: 'northwind-ops',
@@ -37,7 +37,7 @@ export const PROJECTS: ProjectRowData[] = [
     impact: 'AI triage + sync layer over the existing stack — 31 hours/week of manual work gone.',
     imageUrl: '/work/northwind-ops.jpg',
     imageAlt: 'Logistics warehouse with stacked pallets',
-    tint: 'linear-gradient(135deg, #0b1a30 0%, #2f6bff 100%)',
+    tint: 'linear-gradient(135deg, #0e1f1e 0%, #2f7d82 100%)',
   },
   {
     slug: 'aerie-hotels',
@@ -48,7 +48,7 @@ export const PROJECTS: ProjectRowData[] = [
     impact: 'One calendar across six OTAs — double-bookings eliminated, direct revenue +24%.',
     imageUrl: '/work/aerie-hotels.jpg',
     imageAlt: 'Warm wood-panelled boutique hotel lounge',
-    tint: 'linear-gradient(135deg, #16335f 0%, #34c2f0 100%)',
+    tint: 'linear-gradient(135deg, #1d5a5e 0%, #5bbfc9 100%)',
   },
   {
     slug: 'stillwater-studio',
@@ -59,7 +59,7 @@ export const PROJECTS: ProjectRowData[] = [
     impact: 'Editorial site engineered for speed — 98 Lighthouse, +52% qualified inquiries.',
     imageUrl: '/work/stillwater-studio.jpg',
     imageAlt: 'Minimalist architectural interior with an arch',
-    tint: 'linear-gradient(135deg, #2f6bff 0%, #7aa6ff 100%)',
+    tint: 'linear-gradient(135deg, #34c2d4 0%, #8fe0e6 100%)',
   },
 ]
 
@@ -115,7 +115,7 @@ export const TESTIMONIALS: { quote: string; name: string; role: string }[] = [
   },
   {
     quote:
-      'Owning our ticketing changed the economics of the whole festival. Driftwork understood the stakes of launch night and were in the trenches with us.',
+      'Owning our ticketing changed the economics of the whole festival. ATTIC understood the stakes of launch night and were in the trenches with us.',
     name: 'Tomas Reyes',
     role: 'Founder, Cadence Festival',
   },
@@ -170,14 +170,14 @@ export const CONTENT: Content = {
       { line: 'shaped around how your business actually works.' },
     ],
     paragraph2:
-      'Driftwork is a small senior studio in Athens. We take on few projects, build them end to end, and stay long after launch.',
+      'ATTIC is a small senior studio in Athens. We take on few projects, build them end to end, and stay long after launch.',
   },
   faq: {
     eyebrow: 'questions',
     heading: 'Frequently Asked',
     items: [
       {
-        question: 'What kind of projects does Driftwork take on?',
+        question: 'What kind of projects does ATTIC take on?',
         answer:
           'We design and build digital products end to end — marketing sites, web apps, e-commerce, and brand-driven experiences. If it lives on the web and needs both serious engineering and real taste, it is in our wheelhouse.',
       },
